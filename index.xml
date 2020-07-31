@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BeiHai</title>
@@ -8,64 +7,14 @@
     <language>ch-cn</language>
     <lastBuildDate>Fri, 31 Jul 2020 16:12:53 +0800</lastBuildDate>
     
-	<atom:link href="https://beihai-chang.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://beihai-chang.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title>Self Censorship</title>
-      <link>https://beihai-chang.github.io/posts/self-censorship/</link>
-      <pubDate>Fri, 31 Jul 2020 16:12:53 +0800</pubDate>
-      
-      <guid>https://beihai-chang.github.io/posts/self-censorship/</guid>
-      <description>在很久以前，写作是最令我快乐的事，拉上厚窗帘，让文字越过边界，一盏台灯，照亮一个孤独的思想犯。我想在互联网开垦一片地，安放那些无处可去的想法。
-然后有很多年我不再写东西，世界也变化了，当我认识到的时候，时代的刹车已经报废了，天翻地覆。
-终于我搭建了自己的第一个Wordpress站点，我买了境外的服务器，没有像我的朋友一样备案。但直到我终于想要写一点自己的东西，才发现原来有这么多事物我不能直呼其名，原来那些邮箱地址可以轻易地将我出卖，原来无论到哪里，我都不得不审查自己的一言一行，只是因为有这样一个群体，一小撮人，他们的权力神圣不可侵犯。是的，无论到那里，我们早已经习惯，因为有那么多的例子在警醒着你。
-政治，是的。终于有一天我们说服了自己，闭嘴。政治是如此重要，太重要了，如果小民也能议论政治，太危险，太危险。把政治交给他们吧，交给那些人，那些我们相信是聪明的人，把眼交给他们，把耳交给他们，把舌头交给他们。
-只是不再问，是先有资格才能拥有，还是既已拥有，便不再问资格。
-只是习惯了被绑架，被表达不属于自己的意志，到最后，也许成为一种荣耀，做一个幸福的人质。
-只是习惯了把口中的同胞当成理所当然的损耗。
-只是习惯了自己的沉默，便不再习惯他人的喧闹。
-只是习惯了忍耐，便讥讽他人的愤怒。
-但我想说够了，不管多么伟大的声音要将我淹没，我想说够了，Self Censorship，够了。长久困于黑暗的人不能立刻见到光明，长久保持缄默的人，即使磕磕绊绊，结结巴巴，也要表达。语无伦次，辞不达意，是必要的适应期。
- 是晨鐘敲響的時候了
-是深淵中靈魂浮現的時候了
-是季節眨眼的時候了
-是花開花落吐出果核的時候了
-是蜘蛛網重構邏輯的時候了
-是槍殺古老記憶的時候了
-是劊子手思念空床的時候了
-是星光鏈接生者與死者的時候了
-是女人在廣告上微笑的時候了
-是銀行的猛虎出籠的時候了
-是石頭雕像走動的時候了
-是時代匿名的時候了
-是詩歌泄露天機的時候了
-是時候了
-​ ——北島 歧路行
- </description>
-    </item>
     
-    <item>
-      <title>Hello World</title>
-      <link>https://beihai-chang.github.io/posts/hello-world/</link>
-      <pubDate>Wed, 29 Jul 2020 11:39:46 +0800</pubDate>
-      
-      <guid>https://beihai-chang.github.io/posts/hello-world/</guid>
-      <description>What can I say?
-This is a markdown demo page.
-Paragraph Ethereum was proposed in late 2013 by Vitalik Buterin, a cryptocurrency researcher and programmer. Development was funded by an online crowdsale that took place between July and August 2014. he system then went live on 30 July 2015, with 72 million coins minted. This accounts for about 65 percent of the total circulating supply in April 2020.
-Quote  亦以明死生之大，匹夫之有重于社稷也。</description>
-    </item>
     
-    <item>
-      <title>About</title>
-      <link>https://beihai-chang.github.io/about/</link>
-      <pubDate>Wed, 29 Jul 2020 11:11:37 +0800</pubDate>
-      
-      <guid>https://beihai-chang.github.io/about/</guid>
-      <description>Me Beihai-Chang
-来自《三体》中我最喜欢的角色。</description>
-    </item>
+    
+    
+    
     
   </channel>
 </rss>
