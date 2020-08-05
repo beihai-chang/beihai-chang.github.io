@@ -101,7 +101,7 @@
 
 <p>函数是Javascript的基本模块单元。</p>
 
-<h3 id="函数对象">函数对象</h3>
+<h2 id="函数对象">函数对象</h2>
 
 <p>在Javascript中，函数也是对象。</p>
 
@@ -115,7 +115,7 @@
 
 <p>函数相比于其他对象的特别之处在于：函数可以被调用（invoke）。</p>
 
-<h3 id="函数字面量">函数字面量</h3>
+<h2 id="函数字面量">函数字面量</h2>
 
 <p>函数对象是通过函数字面量（function literal）创建的。</p>
 
@@ -137,7 +137,7 @@
 
 <p>函数字面量可以出现在任何允许表达式出现的地方。函数可以被定义在其他函数中，而这样的一个内部函数既能访问自己的参数和变量，也能自由访问将其嵌套在内的父函数的参数和变量。通过函数字面量创建的函数包含一个通向外部<strong>上下文</strong>的连接，这被称作<strong>闭包</strong>（closure）。</p>
 
-<h3 id="调用">调用</h3>
+<h2 id="调用">调用</h2>
 
 <p>调用函数会中断当前函数的执行，将控制权和参数传递给新函数。</p>
 
@@ -152,7 +152,7 @@
 <li>apply调用模式</li>
 </ol>
 
-<h4 id="方法调用模式">方法调用模式</h4>
+<h3 id="方法调用模式">方法调用模式</h3>
 
 <p>如果一个函数是某个对象的属性，我们就称其为方法（method）。如果调用表达式中包含对属性的抽取（<code>.</code>或者<code>[]</code>），那么就叫做方法的调用。当调用方法时，<code>this</code>就会绑定到<strong>相应的对象</strong>。</p>
 
@@ -173,7 +173,7 @@ document.writeln(myObject.value); // 3
 
 <p>这一类能够通过<code>this</code>获取自身所属对象上下文的方法叫做公共方法（public method）。</p>
 
-<h4 id="函数调用模式">函数调用模式</h4>
+<h3 id="函数调用模式">函数调用模式</h3>
 
 <p>当一个函数不是某个对象的属性时，它就会作为<strong>函数</strong>被调用。这样的调用模式就是<strong>函数调用模式</strong>。</p>
 
@@ -198,7 +198,7 @@ myObject.double();
 document.writeln(myObject.value);
 </code></pre>
 
-<h4 id="构造器调用模式">构造器调用模式</h4>
+<h3 id="构造器调用模式">构造器调用模式</h3>
 
 <p>如果在调用一个函数时加上<code>new</code>的前缀，那么这就是<strong>构造器调用模式</strong>。这会产生一个新对象，隐式地连接到函数的<code>prototype</code>属性。</p>
 
@@ -220,7 +220,7 @@ var myQuo = new Quo(&quot;confused&quot;);
 document.writeln(myQuo.get_status()); // confused
 </code></pre>
 
-<h4 id="apply调用模式">apply调用模式</h4>
+<h3 id="apply调用模式">apply调用模式</h3>
 
 <p>apply调用模式最大的亮点是可以让我们自由选择<code>this</code>的指向。</p>
 
@@ -248,7 +248,7 @@ var sum = add_tuple.apply(tuple); // this指向对象tuple
 document.writeln(&quot;sum: &quot; + sum); // sum: 15
 </code></pre>
 
-<h3 id="arguments">arguments</h3>
+<h2 id="arguments">arguments</h2>
 
 <p>前面介绍函数调用时说，除了事先声明的形式参数parameter，每个函数还会额外接收两个参数：<code>this</code>和<code>arguments</code>。<code>arguments</code>可以让函数接收数量的参数，使用方式如下：</p>
 
@@ -266,7 +266,7 @@ document.writeln(add_all(1, 2, 3, 4, 5)); // 15
 
 <p>事实上完全可以通过使用数组来达到类似的功能，因此<code>arguments</code>并不是一个能算上成功的设计。</p>
 
-<h3 id="return">return</h3>
+<h2 id="return">return</h2>
 
 <p>函数在执行到return语句时会立即退出。</p>
 
@@ -274,7 +274,7 @@ document.writeln(add_all(1, 2, 3, 4, 5)); // 15
 
 <p>在<strong>构造器调用模式中</strong>，如果返回值不是对象，则默认返回<code>this</code>（指向新创建的对象）。</p>
 
-<h3 id="异常">异常</h3>
+<h2 id="异常">异常</h2>
 
 <p>与Java一样，Javascript可以用<code>throw</code>抛出异常，但是要以对象字面量的形式说明异常对象的<code>name</code>和<code>message</code>：</p>
 
@@ -304,7 +304,7 @@ try_it('1', '2'); // TypeError: add needs numbers
 
 <p>与Java不同，Javascript的try语句块只能搭配<strong>一个</strong>catch语句块，这个catch会捕获<strong>任何</strong>发生的异常。所以如果要分开处理不同的异常，则需要检视异常对象的<code>name</code>属性。</p>
 
-<h3 id="扩充基本类型功能">扩充基本类型功能</h3>
+<h2 id="扩充基本类型功能">扩充基本类型功能</h2>
 
 <p>Javascript允许我们扩充基本类型的功能，比如下面的例子，我们给<code>Function.prototype</code>添加了一个<code>method</code>方法，因为所有函数都默认以<code>Function.prototype</code>为原型，这样做可以让所有函数都拥有这个名为<code>method</code>的方法：</p>
 
@@ -335,7 +335,7 @@ document.writeln((-10 / 3).integer()); // -3
 };
 </code></pre>
 
-<h3 id="递归">递归</h3>
+<h2 id="递归">递归</h2>
 
 <p>当一个函数调用自身，就叫做<strong>递归</strong>（recursion）。递归可以将一个问题拆分为一系列相似的子问题，是非常强大的编程技巧。</p>
 
@@ -398,7 +398,7 @@ Move disc 1 from Src to Dst
 };
 </code></pre>
 
-<h3 id="作用域">作用域</h3>
+<h2 id="作用域">作用域</h2>
 
 <p>Javascript的函数有作用域，但代码块没有。也就是说，用花括号包裹一段代码，并不会创造一个作用域保护花括号内定义的变量，这一点与其他类C语言有很大不同。</p>
 
@@ -418,7 +418,7 @@ Move disc 1 from Src to Dst
 };
 </code></pre>
 
-<h3 id="闭包">闭包</h3>
+<h2 id="闭包">闭包</h2>
 
 <p>与Java不同，Javascript不能将对象的属性声明为<code>private</code>来防止非法更改，但我们可以利用函数作用域来达到这种效果，比如下面例子中的<code>myObject</code>对象，我们没有使用对象字面量来初始化<code>myObject</code>，而是通过调用函数，把对象字面量作为函数的返回值。</p>
 
@@ -496,7 +496,7 @@ var add_the_handlers = function (nodes) {
 
 <p>现在<code>alert</code>访问的<code>i</code>是<code>helper</code>函数的参数<code>i</code>，而不是函数<code>add_the_handlers</code>的变量<code>i</code>。这样一来，弹出对话框中的数字就是独一无二的节点序号，而不是节点总数。</p>
 
-<h3 id="回调">回调</h3>
+<h2 id="回调">回调</h2>
 
 <p>函数可以很方便地用来处理非连续事件。例如用户向服务器发送一个请求，然后展示服务器地返回信息。比较初级的写法是这样：</p>
 
@@ -516,7 +516,7 @@ display(response);
 });
 </code></pre>
 
-<h3 id="模块">模块</h3>
+<h2 id="模块">模块</h2>
 
 <p>模块（module）是一个提供接口却<strong>隐藏</strong>状态与实现的函数或对象。</p>
 
@@ -596,7 +596,7 @@ Q1003
 Q1004
 </code></pre>
 
-<h3 id="级联">级联</h3>
+<h2 id="级联">级联</h2>
 
 <p>一些方法没有返回值，通常这些方法用来设置或修改对象的某个状态。但如果我们让这些方法返回<code>this</code>，就能够启用<strong>级联</strong>（cascade），在一条单独的语句中依次调用对象的很多方法：</p>
 
@@ -624,7 +624,7 @@ tip('This box is resizeable');
 
 <p>每一个被调用的方法都会返回<strong>原对象</strong>，这样就可以被下一个调用所用。</p>
 
-<h3 id="记忆">记忆</h3>
+<h2 id="记忆">记忆</h2>
 
 <p>通常我们可以用递归来输出一个斐波那契数列：</p>
 
