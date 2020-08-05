@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ch-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>Javascript: Function - BeiHai</title>
+    <meta name="generator" content="Hugo 0.57.2" /> <link rel="stylesheet" href="https://beihai-chang.github.io/css/main.min.f022f6587c8a453758aecab190be276b6f4f0eaf104658b0e949260cdd8d79ed.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/monokai.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Josefin Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Love Ya Like A Sister" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=IM Fell DW Pica" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif TC" type="text/css" media="all" />
+     
+    <style>
+        html {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="navbar">
+            
+            <progress class="content_progress" max="0" value="0"></progress> 
+            <div class="container">
+                <div class="navbar-header header-back2home-logo">
+                    <span class="logo_mark">>$</span>
+                    <a href="https://beihai-chang.github.io">
+                        <span class="logo_text">cd /home/</span>
+                        <span class="logo_cursor"></span>
+                    </a>
+                </div>
+                <div class="navbar-right">
+                    
+                    <span class="menu">
+                        
+                        <a class="menu-item"
+                            href="/categories/" title="">Categories</a>
+                        
+                        <a class="menu-item"
+                            href="/tags/" title="">Tags</a>
+                        
+                        <a class="menu-item"
+                            href="/about/" title="">About</a>
+                        
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div class="container">
+
+<article class="post-wrap">
+    <header class="post-header">
+        <h1 class="post-title">Javascript: Function</h1>
+        <div class="post-meta">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+                Aug 5, 2020
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-book">
+  <title>book</title>
+  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+</svg>
+                6464 words
+            </div>
+            
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-folder">
+  <title>folder</title>
+  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+</svg>
+                
+                
+                
+                <a href="https://beihai-chang.github.io/categories/%E7%AC%94%E8%AE%B0/"> 笔记</a>
+                
+                
+            </div>
+        </div>
+    </header>
+
+    <div class="post-content">
+        
+
+<p>函数是Javascript的基本模块单元。</p>
+
+<h3 id="函数对象">函数对象</h3>
+
+<p>在Javascript中，函数也是对象。</p>
+
+<p>前面提到，通过对象字面量创建的对象会默认以<code>Object.prototype</code>作为原型对象。而函数则会连接到<code>Function.prototype</code>对象，<code>Function.prototype</code>又以<code>Object.prototype</code>为原型对象。</p>
+
+<p>每个函数都有两个与生俱来的隐藏属性：函数的上下文和实现函数行为的代码。</p>
+
+<p>同时，每个函数都有一个<code>prototype</code>属性，<code>prototype</code>属性的值是一个<strong>对象</strong>，这个对象有一个<code>constructor</code>属性，而这个<code>constructor</code>属性的值恰恰是<strong>该函数本身</strong>。</p>
+
+<p>函数作为对象意味着什么？意味着函数可以像任何其他的<strong>值</strong>（value）一样使用：储存在变量、对象或数组；作为实参传递给另一个函数；作为某个函数的返回值；甚至拥有自己的方法（method）。</p>
+
+<p>函数相比于其他对象的特别之处在于：函数可以被调用（invoke）。</p>
+
+<h3 id="函数字面量">函数字面量</h3>
+
+<p>函数对象是通过函数字面量（function literal）创建的。</p>
+
+<p>函数字面量包含四部分：</p>
+
+<ol>
+<li>预留关键字<code>function</code></li>
+<li>函数名，可选，没有函数名的函数叫做<strong>匿名函数</strong>（anonymous）</li>
+<li>参数表，包裹在一对括号中。这些参数名会被定义为变量，且在函数得到调用时，初始化为实参的值</li>
+<li>函数体，包裹在一对花括号中的语句，当函数被调用时，这些语句就会被执行</li>
+</ol>
+
+<p>下面展示了一个匿名函数的创建，这个函数没有函数名，但我们把它存储在了一个变量中：</p>
+
+<pre><code class="language-javascript">var add = function (a, b) {
+    return a + b;
+};
+</code></pre>
+
+<p>函数字面量可以出现在任何允许表达式出现的地方。函数可以被定义在其他函数中，而这样的一个内部函数既能访问自己的参数和变量，也能自由访问将其嵌套在内的父函数的参数和变量。通过函数字面量创建的函数包含一个通向外部<strong>上下文</strong>的连接，这被称作<strong>闭包</strong>（closure）。</p>
+
+<h3 id="调用">调用</h3>
+
+<p>调用函数会中断当前函数的执行，将控制权和参数传递给新函数。</p>
+
+<p>除了事先声明的形式参数parameter，每个函数还会额外接收两个参数：<code>this</code>和<code>arguments</code>。</p>
+
+<p><code>this</code>是非常重要的参数，它的值取决于该函数的<strong>调用模式</strong>（invoking pattern），Javascript有四种函数调用模式：</p>
+
+<ol>
+<li>方法调用模式</li>
+<li>函数调用模式</li>
+<li>构造器调用模式</li>
+<li>apply调用模式</li>
+</ol>
+
+<h4 id="方法调用模式">方法调用模式</h4>
+
+<p>如果一个函数是某个对象的属性，我们就称其为方法（method）。如果调用表达式中包含对属性的抽取（<code>.</code>或者<code>[]</code>），那么就叫做方法的调用。当调用方法时，<code>this</code>就会绑定到<strong>相应的对象</strong>。</p>
+
+<pre><code class="language-javascript">var myObject = {
+    value: 0,
+    increment: function (cnt) {
+        this.value += typeof cnt === 'number' ? cnt : 1;
+    }
+};
+
+myObject.increment();
+document.writeln(myObject.value); // 1
+myObject.increment(2);
+document.writeln(myObject.value); // 3
+</code></pre>
+
+<p><code>this</code>与对象的绑定是直到函数被调用才发生的，术语上叫做*late binding*，这一特性使得函数能够对<code>this</code>高度复用。</p>
+
+<p>这一类能够通过<code>this</code>获取自身所属对象上下文的方法叫做公共方法（public method）。</p>
+
+<h4 id="函数调用模式">函数调用模式</h4>
+
+<p>当一个函数不是某个对象的属性时，它就会作为<strong>函数</strong>被调用。这样的调用模式就是<strong>函数调用模式</strong>。</p>
+
+<p>函数调用模式中，<code>this</code>被指向了<strong>全局对象</strong>（global object），这带来了一个问题：如果我们在方法的内部定义一个辅助函数，就像下面例子中的<code>help</code>，那么调用该函数时，<code>this</code>就指向了全局对象，而非<code>myObject</code>。于是，<code>this.value</code>无法访问<code>myObject</code>对象的<code>value</code>属性，而会被自动处理为<code>undefined</code>。</p>
+
+<p>解决方法是在辅助函数之外，将<code>this</code>赋给一个变量，这样辅助函数也能访问原对象的属性了。</p>
+
+<pre><code class="language-javascript">var add = function (a, b) {
+    return a + b;
+};
+
+myObject.double = function () {
+    var that = this;
+    var help = function () {
+        // note that this.value will be undefined
+        that.value = add(that.value, that.value);
+    }
+    help();
+};
+
+myObject.double();
+document.writeln(myObject.value);
+</code></pre>
+
+<h4 id="构造器调用模式">构造器调用模式</h4>
+
+<p>如果在调用一个函数时加上<code>new</code>的前缀，那么这就是<strong>构造器调用模式</strong>。这会产生一个新对象，隐式地连接到函数的<code>prototype</code>属性。</p>
+
+<p>在构造器调用模式中，<code>new</code>会被绑定到<strong>新对象</strong>。</p>
+
+<pre><code class="language-javascript">var Quo = function (message) {
+    // this绑定到新对象
+    // 这里给每个Quo新对象添加了一个status属性
+    this.status = message;
+};
+
+// 给Quo的prototype属性添加一个get_status()方法
+Quo.prototype.get_status = function () {
+    return this.status;
+};
+
+// 变量myQuo存储了以Quo.prototype为原型的新对象
+var myQuo = new Quo(&quot;confused&quot;);
+document.writeln(myQuo.get_status()); // confused
+</code></pre>
+
+<h4 id="apply调用模式">apply调用模式</h4>
+
+<p>apply调用模式最大的亮点是可以让我们自由选择<code>this</code>的指向。</p>
+
+<p>前面说过在Javascript中函数也是<strong>对象</strong>，每个函数对象都有一个<code>apply</code>方法，该方法接收两个参数：</p>
+
+<ol>
+<li><code>this</code>的值</li>
+<li>实参数组</li>
+</ol>
+
+<p>使用实例：</p>
+
+<pre><code class="language-javascript">// 这个函数返回二元组中值的和
+var add_tuple = function () {
+    return this.first + this.second;
+};
+
+// 一个二元组对象
+var tuple = {
+    first: 7,
+    second: 8
+};
+
+var sum = add_tuple.apply(tuple); // this指向对象tuple
+document.writeln(&quot;sum: &quot; + sum); // sum: 15
+</code></pre>
+
+<h3 id="arguments">arguments</h3>
+
+<p>前面介绍函数调用时说，除了事先声明的形式参数parameter，每个函数还会额外接收两个参数：<code>this</code>和<code>arguments</code>。<code>arguments</code>可以让函数接收数量的参数，使用方式如下：</p>
+
+<pre><code class="language-javascript">var add_all = function () {
+    var i, sum = 0;
+    for (i = 0; i &lt; arguments.length; i++)
+        sum += arguments[i];
+    return sum;
+};
+
+document.writeln(add_all(1, 2, 3, 4, 5)); // 15
+</code></pre>
+
+<p>可以看到<code>arguments</code>比较类似于数组，既可以通过下标访问元素，也拥有表示长度的<code>length</code>属性。但实际上<code>arguments</code>和数组是两码事，并不具备数组的固有方法。</p>
+
+<p>事实上完全可以通过使用数组来达到类似的功能，因此<code>arguments</code>并不是一个能算上成功的设计。</p>
+
+<h3 id="return">return</h3>
+
+<p>函数在执行到return语句时会立即退出。</p>
+
+<p>Javascript函数一定有一个返回值，如果没有说明则默认为<code>undefined</code>。</p>
+
+<p>在<strong>构造器调用模式中</strong>，如果返回值不是对象，则默认返回<code>this</code>（指向新创建的对象）。</p>
+
+<h3 id="异常">异常</h3>
+
+<p>与Java一样，Javascript可以用<code>throw</code>抛出异常，但是要以对象字面量的形式说明异常对象的<code>name</code>和<code>message</code>：</p>
+
+<pre><code class="language-javascript">var add = function (a, b) {
+    if(typeof a !== 'number' || typeof b !== 'number')
+        throw {
+            name: 'TypeError',
+            message: 'add needs numbers'
+        };
+    return a + b;
+};
+</code></pre>
+
+<p>捕获异常则需要使用try-catch语句，<code>catch</code>紧跟的括号里要有一个变量，用来存放捕获到的异常对象。</p>
+
+<pre><code class="language-javascript">var try_it = function (a, b) {
+    try {
+        var result = add(a, b);
+        document.writeln(&quot;sum&quot; + result);
+    } catch (e) {
+        document.writeln(e.name + &quot;: &quot; + e.message);
+    }
+}
+
+try_it('1', '2'); // TypeError: add needs numbers
+</code></pre>
+
+<p>与Java不同，Javascript的try语句块只能搭配<strong>一个</strong>catch语句块，这个catch会捕获<strong>任何</strong>发生的异常。所以如果要分开处理不同的异常，则需要检视异常对象的<code>name</code>属性。</p>
+
+<h3 id="扩充基本类型功能">扩充基本类型功能</h3>
+
+<p>Javascript允许我们扩充基本类型的功能，比如下面的例子，我们给<code>Function.prototype</code>添加了一个<code>method</code>方法，因为所有函数都默认以<code>Function.prototype</code>为原型，这样做可以让所有函数都拥有这个名为<code>method</code>的方法：</p>
+
+<pre><code class="language-javascript">Function.prototype.method = function (name, func) {
+    this.prototype[name] = func;
+    return this;
+};
+</code></pre>
+
+<p><code>method</code>方法可以为任意函数对象的<code>prototype</code>属性添加一个我们指定的方法<code>func</code>，这样一来任何以该函数的<code>prototype</code>为原型的对象都可以使用我们指定的方法<code>func</code>。下面的例子中，我们就为所有的数字类型对象添加了一个取整方法<code>integer</code>：</p>
+
+<pre><code class="language-javascript">Number.method('integer', function () {
+    return Math[this &lt; 0 ? 'ceil' : 'floor'](this);
+})
+
+document.writeln((-10 / 3).integer()); // -3
+</code></pre>
+
+<p>Javascript的原型继承是动态的，新的方法会被立刻赋予到所有对象上，即使该对象在方法添加前就已经存在了。</p>
+
+<p>基本类型的原型是公共结构，因此在与类库混用的时候要加以留意。一个好的做法是只在确定没有该方法时添加它：</p>
+
+<pre><code class="language-javascript">Function.prototype.method = function (name, func) {
+    if(!this.prototype[name]) {
+    	this.prototype[name] = func;
+    }
+    return this;
+};
+</code></pre>
+
+<h3 id="递归">递归</h3>
+
+<p>当一个函数调用自身，就叫做<strong>递归</strong>（recursion）。递归可以将一个问题拆分为一系列相似的子问题，是非常强大的编程技巧。</p>
+
+<p>用递归解决<a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">汉诺塔问题</a>：</p>
+
+<pre><code class="language-javascript">var hanoi = function hanoi(disc, src, aux, dst) {
+    if (disc &gt; 0) {
+        hanoi(disc - 1, src, dst, aux);
+        document.writeln(&quot;Move disc &quot; + disc + &quot; from &quot; + src + &quot; to &quot; + dst);
+        hanoi(disc - 1, aux, src, dst);
+    }
+}
+
+hanoi(3, 'Src', 'Aux', 'Dst');
+</code></pre>
+
+<p>输出结果：</p>
+
+<pre><code class="language-txt">Move disc 1 from Src to Dst
+Move disc 2 from Src to Aux
+Move disc 1 from Dst to Aux
+Move disc 3 from Src to Dst
+Move disc 1 from Aux to Src
+Move disc 2 from Aux to Dst
+Move disc 1 from Src to Dst
+</code></pre>
+
+<p>还可以利用递归来遍历DOM文档树：</p>
+
+<pre><code class="language-javascript">var walk_the_DOM = function walk (node, func) {
+    func(node);
+    node = node.firstChild;
+    // 如果当前节点拥有子节点, 则进入while循环
+    // 这个while循环用来遍历子节点的所有兄弟节点
+    while (node) {
+        // 深度优先
+        walk(node, func);
+        node = node.nextSibling;
+    }
+}
+</code></pre>
+
+<p>利用该函数，我们能很轻松地根据属性来搜索整个文档树中的节点：</p>
+
+<pre><code class="language-javascript">var getElementsByAttribute = function (attr, value) {
+    // 数组result用来存放检索的结果
+    var result = [];
+    walk_the_DOM(document.body, function (node) {
+        // nodeType为1, 说明该节点是Element
+        // 如果当前节点是Element, 则将该节点的attr属性存放在变量actual中
+        var actual = node.nodeType === 1 &amp;&amp; node.getAttribute(attr);
+        // 如果actual的类型是string, 说明已经成功提取了该element的指定属性
+        // &amp;&amp;后的内容判断该element的attr属性值是否与给定的value相匹配
+        // 如果value的类型不是string, 说明没有额外指定用于匹配的value参数
+        // 或者调用getElementsByAttribute时给定的value实参不合法
+        if (typeof actual === 'string' &amp;&amp; (actual === value || typeof value !== 'string'))
+            result.push(node);
+    });
+    return result;
+};
+</code></pre>
+
+<h3 id="作用域">作用域</h3>
+
+<p>Javascript的函数有作用域，但代码块没有。也就是说，用花括号包裹一段代码，并不会创造一个作用域保护花括号内定义的变量，这一点与其他类C语言有很大不同。</p>
+
+<p>因此，在一个函数内<strong>任何</strong>地方声明的变量，在函数内<strong>任何</strong>地方都是可见的。为了增加可读性，最好把函数内所有的变量声明都集中到开头。</p>
+
+<pre><code class="language-javascript">var foo = function ( ) {
+	var a = 3, b = 5;
+	var bar = function ( ) {
+		var b = 7, c = 11;
+		// At this point, a is 3, b is 7, and c is 11
+		a += b + c;
+		// At this point, a is 21, b is 7, and c is 11
+	};
+	// At this point, a is 3, b is 5, and c is not defined
+	bar( );
+	// At this point, a is 21, b is 5
+};
+</code></pre>
+
+<h3 id="闭包">闭包</h3>
+
+<p>与Java不同，Javascript不能将对象的属性声明为<code>private</code>来防止非法更改，但我们可以利用函数作用域来达到这种效果，比如下面例子中的<code>myObject</code>对象，我们没有使用对象字面量来初始化<code>myObject</code>，而是通过调用函数，把对象字面量作为函数的返回值。</p>
+
+<p>注意我们将<code>value</code>作为了函数中的变量，而不是直接作为返回对象的属性。这样一来<code>value</code>只对<code>increment</code>和<code>getValue</code>方法可用。因为<strong>函数作用域</strong>的保护，<code>value</code>对其他的程序是<strong>不可见</strong>的。</p>
+
+<pre><code class="language-javascript">var myObject = (function () {
+    var value = 0;
+    return {
+        increment: function (inc) {
+            value += typeof inc === 'number' ? inc : 1;
+        },
+        getValue: function () {
+            return value;
+        }
+    };
+}());
+
+myObject.increment();
+document.writeln(myObject.getValue());
+myObject.increment(2);
+document.writeln(myObject.getValue());
+// document.writeln(myObject.value); // undefined
+</code></pre>
+
+<p>下面给出了一个类似的例子，我们通过一个构造函数<code>quo()</code>来创建了一个拥有私有属性<code>status</code>与<code>get_status</code>方法的对象：</p>
+
+<pre><code class="language-javascript">var quo = function (status) {
+    return {
+        get_status: function () {
+            return status;
+        }
+    };
+};
+
+var myQuo = quo(&quot;exciting&quot;);
+document.writeln(myQuo.get_status()); // exciting
+</code></pre>
+
+<p>可能会令人感到疑惑，变量<code>myQuo</code>存储了函数<code>quo</code>的返回值，既然函数已经返回了，为何<code>get_status</code>仍然能够访问函数的参数<code>status</code>呢。</p>
+
+<p>这就是Javascript函数的 一大特性：函数可以<strong>访问它被创建时所处的上下文环境</strong>，术语叫做<strong>闭包</strong>（closure）。</p>
+
+<p>注意：内部函数访问的是外部函数的实际变量，而不是复制，比如下面这个错误的例子：</p>
+
+<pre><code class="language-javascript">// BAD EXAMPLE
+// 这个函数给一个节点数组中的每个节点添加了事件处理函数, 但是用了错误的方法
+// 当你点击一个节点, 弹出对话框中显示的是节点的总数, 而非序号
+var add_the_handlers = function (nodes) {
+	var i;
+	for (i = 0; i &lt; nodes.length; i += 1) {
+		nodes[i].onclick = function (e) {
+			alert(i);
+		};
+	}
+};
+// END BAD EXAMPLE
+</code></pre>
+
+<p>这个错误是因为内部函数中<code>alert</code>访问的是函数<code>add_the_handlers</code>的变量<code>i</code>，而非<code>i</code>的复制。当函数<code>add_the_handler</code>退出以后，由于闭包机制的存在，每一个事件处理函数都仍然能访问变量<code>i</code>，而此时<code>i</code>的值为节点数组的长度。</p>
+
+<p>通过添加辅助函数，可以纠正这个错误：</p>
+
+<pre><code class="language-javascript">var add_the_handlers = function (nodes) {
+	var helper = function (i) {
+        return function (e) {
+            alert(i);
+        };
+    };
+	var i;
+	for (i = 0; i &lt; nodes.length; i += 1) {
+		nodes[i].onclick = helper(i);
+	}
+};
+</code></pre>
+
+<p>现在<code>alert</code>访问的<code>i</code>是<code>helper</code>函数的参数<code>i</code>，而不是函数<code>add_the_handlers</code>的变量<code>i</code>。这样一来，弹出对话框中的数字就是独一无二的节点序号，而不是节点总数。</p>
+
+<h3 id="回调">回调</h3>
+
+<p>函数可以很方便地用来处理非连续事件。例如用户向服务器发送一个请求，然后展示服务器地返回信息。比较初级的写法是这样：</p>
+
+<pre><code class="language-javascript">request = prepare_the_request( );
+response = send_request_synchronously(request);
+display(response);
+</code></pre>
+
+<p>这种写法有一个问题：程序在得到服务器回应之前会一直处于冻结状态。如果服务器性能不佳或者网络连接缓慢，这样的等待状态可能持续很久，耽误了很多工作。因此我们希望有一个<strong>回调</strong>（callback）机制，把<code>display</code>封装成一个<strong>回调函数</strong>，当我们发出请求后，客户端可以<strong>继续进行其他工作</strong>，直到接到服务器的回应，这时候回调函数被调用，客户端展示服务器返回的内容。</p>
+
+<pre><code class="language-javascript">request = prepare_the_request( );
+// 异步函数send_request_asynchronously接收两个参数: 客户端请求和回调函数
+// send_request_asynchronously函数会立即返回, 这样客户端可以继续进行其他工作, 不会进入冻结状态
+// 当接收到服务器的response, 回调函数就会被调用
+send_request_asynchronously(request, function (response) {
+display(response);
+});
+</code></pre>
+
+<h3 id="模块">模块</h3>
+
+<p>模块（module）是一个提供接口却<strong>隐藏</strong>状态与实现的函数或对象。</p>
+
+<p>在Javascript中，我们通过函数与闭包来实现信息的隐藏。</p>
+
+<p>在下面的例子中，我们为<code>String</code>添加了一个<code>deentityify</code>方法，来将字符串中的html实体替换为相应的字符。</p>
+
+<p>我们需要在一个<code>entity</code>对象中存放html实体与字符的映射，问题在于，我们要在哪里保存这个对象。全局变量太危险，定义在函数内部则每次调用函数都要对对象字面量重新求值，带来性能上的损耗。理想的方法是使用闭包：</p>
+
+<pre><code class="language-javascript">String.method('deentityify', function () {
+    // method方法可以为类型的prototype属性添加方法, 参考前面的代码
+    // 这里的匿名函数并非是我们要的deentityify, 而是定义deentityify的外部函数
+    // 也就是deentityify的上下文, 这样可以实现闭包
+    var entity = {
+        quot: '&quot;',
+        lt: '&lt;',
+        gt: '&gt;'
+    };
+
+    return function () {
+        // 这里返回的才是deentityify函数
+        return this.replace(/&amp;([^&amp;;]+);/g,
+            function (a, b) {
+                var r = entity[b];
+                return typeof r === 'string' ? r : a;
+            }
+        );
+    };
+    // 匿名函数会立即被调用, 返回的deentityify函数作为method方法的第二个参数
+}());
+
+document.writeln('&amp;lt;&amp;quot;&amp;gt;'.deentityify()); // &lt;&quot;&gt;
+</code></pre>
+
+<p>在这个例子中，<code>entity</code>是私有的，只有<code>deentityify</code>有权利对其进行访问。</p>
+
+<p>模块模式（module pattern）的一般形式是：一个<strong>定义了私有变量和函数</strong>的函数；通过闭包创建能够访问私有变量和私有函数的<strong>特权函数</strong>（privileged function）；最后<strong>返回</strong>特权函数，或者将其保存在一个可访问的地方。</p>
+
+<p>下面的例子展示了如何利用模块模式创建安全的对象：</p>
+
+<pre><code class="language-javascript">var serial_maker = function () {
+    // 返回一个能够生成'前缀+序号'格式字符串的对象
+    // 通过闭包, 将prefix和seq变成了私有成员
+    // 返回的对象拥有三个特权方法, 能够访问私有的prefix和seq
+    var prefix = '';
+    var seq = 0;
+
+    return {
+        set_prefix: function (p) {
+            prefix = p;
+        },
+        set_seq: function (s) {
+            seq = s;
+        },
+        gensym: function () {
+            var result = prefix + seq;
+            seq += 1;
+            return result;
+        }
+    };
+};
+
+var serial = serial_maker();
+serial.set_prefix('Q');
+serial.set_seq(1000);
+var i;
+for (i = 0; i &lt; 5; i++)
+    document.writeln(serial.gensym());
+</code></pre>
+
+<p>输出结果：</p>
+
+<pre><code class="language-txt">Q1000
+Q1001
+Q1002
+Q1003
+Q1004
+</code></pre>
+
+<h3 id="级联">级联</h3>
+
+<p>一些方法没有返回值，通常这些方法用来设置或修改对象的某个状态。但如果我们让这些方法返回<code>this</code>，就能够启用<strong>级联</strong>（cascade），在一条单独的语句中依次调用对象的很多方法：</p>
+
+<pre><code class="language-javascript">getElement('myBoxDiv')
+.move(350, 150)
+.width(100)
+.height(100)
+.color('red')
+.border('10px outset')
+.padding('4px')
+.appendText(&quot;Please stand by&quot;)
+.on('mousedown', function (m) {
+this.startDrag(m, this.getNinth(m));
+})
+.on('mousemove', 'drag')
+.on('mouseup', 'stopDrag')
+.later(2000, function ( ) {
+this
+.color('yellow')
+.setHTML(&quot;What hath God wraught?&quot;)
+.slide(400, 40, 200, 200);
+})
+tip('This box is resizeable');
+</code></pre>
+
+<p>每一个被调用的方法都会返回<strong>原对象</strong>，这样就可以被下一个调用所用。</p>
+
+<h3 id="记忆">记忆</h3>
+
+<p>通常我们可以用递归来输出一个斐波那契数列：</p>
+
+<pre><code class="language-javascript">var fibonacci = function (n) {
+return n &lt; 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
+};
+for (var i = 0; i &lt;= 10; i += 1) {
+document.writeln('// ' + i + ': ' + fibonacci(i));
+}
+</code></pre>
+
+<p>这种方法存在一个巨大的弊端：函数会大量调用自身来计算重复的数值，导致效率非常低下。如果我们能够让函数<strong>记忆</strong>之前计算过的值，就可以极大提升运行效率。</p>
+
+<p>为此我们可以利用闭包的特性，设计一个记忆函数模板：</p>
+
+<pre><code class="language-javascript">var memory = function (memo, fundamental) {
+    // memory是一个用来生成记忆函数的模板函数
+    // memo是记忆数组, 因为闭包的机制, memo是私有的, 只有shell函数可以访问
+    // shell就是我们目标中有记忆功能的函数
+    // fundamental是shell的私有函数, 我们可以通过fundamental来规定shell的递归方式
+    var shell = function (n) {
+        // shell会先试图从记忆数组中找到目标数
+        var result = memo[n];
+        if (typeof result !== 'number') {
+            // 如果目标不存在, 则通过fundamental来递归求得该数
+            // 然后将其添加到memo数组中去
+            result = fundamental(n, shell);
+            memo[n] = result;
+        }
+        return result;
+    };
+    return shell;
+};
+</code></pre>
+
+<p>斐波那契数列演示：</p>
+
+<pre><code class="language-javascript">var fibonacci = memory([0, 1], function (n, shell) {
+    return shell(n - 1) + shell(n - 2);
+})
+
+for (i = 0; i &lt; 10; i++)
+    document.writeln(i + &quot;: &quot; + fibonacci(i));
+/* Output:
+0: 0
+1: 1
+2: 1
+3: 2
+4: 3
+5: 5
+6: 8
+7: 13
+8: 21
+9: 34
+ */
+</code></pre>
+
+<p>阶乘演示：</p>
+
+<pre><code class="language-javascript">var factorial = memory([1, 1], function (n, shell) {
+    return n * shell(n - 1);
+});
+
+for (i = 0; i &lt; 5; i++)
+    document.writeln(i + &quot;: &quot; + factorial(i));
+/* Output:
+0: 1
+1: 1
+2: 2
+3: 6
+4: 24
+ */
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+        
+        <p class="copyright-item">
+            <span>Author:</span>
+            <span>Beihai-Chang </span>
+        </p>
+        
+
+        
+        <p class="copyright-item">
+            <span>Link:</span>
+            <a href=https://beihai-chang.github.io/posts/javascript-function/>https://beihai-chang.github.io/posts/javascript-function/</a>
+        </p>
+        
+        
+        <p class="copyright-item lincese">
+            本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+        </p>
+        
+    </div>
+
+    <div class="post-tags">
+        
+        <section>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>Tag(s):
+            
+            <span class="tag"><a href="https://beihai-chang.github.io/tags/javascript/">
+                    #Javascript</a></span>
+            
+        </section>
+        
+    </div>
+
+</article>
+</div>
+</main>
+<div class="copyright">
+    
+    <span itemprop="copyrightYear">2020 - 2020</span> 
+    <span class="with-love">
+        <i class="iconfont icon-love"></i>
+    </span> 
+    <span class="author" itemprop="copyrightHolder"><a href="https://beihai-chang.github.io">Beihai-Chang</a> |
+    </span> 
+    <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a></span>
+</div>
+</div>
+</body>
+
+</html>

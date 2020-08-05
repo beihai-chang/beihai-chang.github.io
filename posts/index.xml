@@ -6,10 +6,19 @@
     <description>Recent content in Posts on BeiHai</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ch-cn</language>
-    <lastBuildDate>Sun, 02 Aug 2020 11:01:05 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2020 12:40:37 +0800</lastBuildDate>
     
 	<atom:link href="https://beihai-chang.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Javascript: Function</title>
+      <link>https://beihai-chang.github.io/posts/javascript-function/</link>
+      <pubDate>Wed, 05 Aug 2020 12:40:37 +0800</pubDate>
+      
+      <guid>https://beihai-chang.github.io/posts/javascript-function/</guid>
+      <description>函数是Javascript的基本模块单元。 函数对象 在Javascript中，函数也是对象。 前面提到，通过对象字面量创建的对象会默认以Obje</description>
+    </item>
     
     <item>
       <title>Javascript: Thought, Grammar and Object</title>
